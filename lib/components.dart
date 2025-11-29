@@ -39,12 +39,41 @@ class _TabsWebState extends State<TabsWeb> {
                 color: Colors.transparent,
                 decoration: TextDecoration.underline,
                 decorationThickness: 1,
-                decorationColor: Colors.black,
+                decorationColor: Colors.tealAccent,
                 shadows: [Shadow(offset: Offset(0, -08))],
               )
             : GoogleFonts.oswald(fontSize: 23.0, color: Colors.black),
         child: Text(widget.title),
       ),
+    );
+  }
+}
+
+class SansBold extends StatelessWidget {
+  final String text;
+  final size;
+
+  const SansBold(this.text, this.size, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.openSans(fontSize: size, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class Sans extends StatelessWidget {
+  final String text;
+  final size;
+  const Sans(this.text, this.size,{super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.openSans(fontSize: size, fontWeight: FontWeight.bold),
     );
   }
 }
