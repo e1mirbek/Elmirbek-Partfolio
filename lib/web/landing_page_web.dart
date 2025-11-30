@@ -1,6 +1,5 @@
 import 'package:elmirbek_abdumanapov/components.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -40,37 +39,65 @@ class _LandingPageWebState extends State<LandingPageWeb> {
       ),
       body: SafeArea(
         child: ListView(
-          // First page
+            // First page
           children: [
             Container(
-                padding: EdgeInsets.symmetric(vertical: 40),
-              child: LayoutBuilder(builder: (context, contrains) {
+              height: heightDevice -56,
+              child: LayoutBuilder(
+                builder: (context, contrains) {
+                  // Проверка: маленький экран или большой
+                  bool isSmall = contrains.maxWidth < 1200;
 
-                // Проверка: маленький экран или большой
-                bool isSmall = contrains.maxWidth < 1300;
+                  // Адаптивные размеры логики
+                  double avatarSize = isSmall ? 90 : 147;
+                  double nameFontSize = isSmall ? 28 : 55;
+                  double welcomeFontSize = isSmall ? 12 : 15;
+                  double professionFontSize = isSmall ? 20 : 30;
 
-
-                // Адаптивные размеры логики
-                double avatarSize = isSmall ? 90 : 147;
-                double nameFontSize = isSmall ? 28 : 55;
-                double welcomeFontSize = isSmall ? 12 : 15;
-
-                  return isSmall ?  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                     _buildTextBlock(nameFontSize, welcomeFontSize),
-                      _buildAvatar(avatarSize),
-                    ],
-                  ) :
-                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _buildTextBlock(nameFontSize, welcomeFontSize),
-                     _buildAvatar(avatarSize),
-                    ],
-                  );
-              })
+                  return isSmall
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _buildTextBlock(
+                              nameFontSize,
+                              welcomeFontSize,
+                              professionFontSize,
+                              15,
+                            ),
+                            _buildAvatar(avatarSize),
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _buildTextBlock(
+                              nameFontSize,
+                              welcomeFontSize,
+                              professionFontSize,
+                              15,
+                            ),
+                            _buildAvatar(avatarSize),
+                          ],
+                        );
+                },
+              ),
             ),
+            // Second Page
+            Container(
+              height: heightDevice / 1.5,
+              decoration: BoxDecoration(
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SansBold("Обо мне", 40),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -93,25 +120,59 @@ Widget _buildAvatar(double size) {
   );
 }
 
-Widget _buildTextBlock(double nameSize, double welcomeSize) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Container(
-        decoration: BoxDecoration(
-          color: Colors.tealAccent,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-            bottomRight: Radius.circular(20),
+Widget _buildTextBlock(
+  double nameSize,
+  double welcomeSize,
+  double professionSize,
+  feedbackSize,
+) {
+  return Padding(
+    padding: const EdgeInsets.all(15.0),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.tealAccent,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
           ),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: SansBold("Приветствую! Это моя коллекция проектов, созданных с вниманием к деталям.", welcomeSize),
         ),
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: SansBold("Добро пожаловать, я", welcomeSize),
-      ),
-      const SizedBox(height: 15,),
-      SansBold("Элмирбек Абдуманапов", nameSize),
-      const SizedBox(height: 15,),
-    ],
+        const SizedBox(height: 15),
+        SansBold("Элмирбек Абдуманапов", nameSize),
+        const SizedBox(height: 15),
+        Sans("Flutter разработчик | IOS | Android | WEB", professionSize),
+        const SizedBox(height: 15),
+        Row(
+          children: [
+            Icon(Icons.email_outlined),
+            const SizedBox(width: 20),
+            Sans("elmirgrowth@gmail.com", feedbackSize),
+          ],
+        ),
+        const SizedBox(height: 15,),
+        Row(
+          children: [
+            Icon(Icons.call_outlined),
+            const SizedBox(width: 20),
+            Sans("+996 701 468 346", feedbackSize),
+          ],
+        ),
+        const SizedBox(height: 15,),
+        Row(
+          children: [
+            Icon(Icons.location_on_outlined),
+            const SizedBox(width: 20),
+            Sans("20/A, ул.Сатаева, Бишкек", feedbackSize),
+          ],
+        ),
+      ],
+    ),
   );
 }
