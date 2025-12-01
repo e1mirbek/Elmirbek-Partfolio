@@ -2,8 +2,6 @@
 
 
 
-
-
 import 'package:flutter/material.dart';
 
 class AvatarWidget extends StatelessWidget {
