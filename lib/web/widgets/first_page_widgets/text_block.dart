@@ -47,7 +47,10 @@ class TextBlock extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: feedbackData.map((item) {
-              return FeedbackItem(icon: item["icon"], text: item["text"]);
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: FeedbackItem(icon: item["icon"], text: item["text"]),
+              );
             }).toList(),
           ),
         ],
