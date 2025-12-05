@@ -1,11 +1,11 @@
 import 'package:elmirbek_abdumanapov/components.dart';
 import 'package:flutter/material.dart';
 
-class FeedbackItem extends StatelessWidget {
+class FeedbackItemWidget extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  FeedbackItem({
+  FeedbackItemWidget({
     super.key,
     required this.icon,
     required this.text,
