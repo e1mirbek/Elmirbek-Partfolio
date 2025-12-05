@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TabsWeb extends StatefulWidget {
@@ -66,13 +66,67 @@ class SansBold extends StatelessWidget {
 class Sans extends StatelessWidget {
   final String text;
   final size;
-  const Sans(this.text, this.size,{super.key});
+
+  const Sans(this.text, this.size, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.openSans(fontSize: size, fontWeight: FontWeight.bold),
+      style: GoogleFonts.openSans(fontSize: size, fontWeight: FontWeight.w500),
+    );
+  }
+}
+
+class TextForm extends StatelessWidget {
+  final heading;
+  final width;
+  final hintText;
+  final maxLines;
+
+  const TextForm({
+    super.key,
+    required this.heading,
+    required this.width,
+    required this.hintText,
+    required this.maxLines,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Sans(heading, 16),
+        const SizedBox(height: 5),
+        SizedBox(
+          width: width,
+          child: TextFormField(
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(10),
+              FilteringTextInputFormatter.allow(RegExp("[a-zA-Zа-яА-Я]")),
+            ],
+            maxLines: maxLines == null ? null : maxLines,
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: GoogleFonts.poppins(fontSize: 14),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red, width: 2),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              ),
+              border: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.tealAccent, width: 2),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.teal),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
