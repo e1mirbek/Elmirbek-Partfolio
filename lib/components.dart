@@ -98,7 +98,7 @@ class TextForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Sans(heading, 16),
-        const SizedBox(height: 5),
+        const SizedBox(height: 5.0),
         SizedBox(
           width: width,
           child: TextFormField(
@@ -111,17 +111,17 @@ class TextForm extends StatelessWidget {
               hintText: hintText,
               hintStyle: GoogleFonts.poppins(fontSize: 14),
               focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red, width: 2),
+                borderSide: BorderSide(color: Colors.red, width: 2.0),
                 borderRadius: BorderRadius.all(Radius.circular(15.0)),
               ),
               border: OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.tealAccent, width: 2),
+                borderSide: BorderSide(color: Colors.tealAccent, width: 2.0),
                 borderRadius: BorderRadius.all(Radius.circular(15.0)),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.teal),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
               ),
             ),
           ),
