@@ -1,6 +1,6 @@
 import 'package:elmirbek_abdumanapov/components.dart';
 import 'package:elmirbek_abdumanapov/web/date/feedback_data.dart';
-import 'package:elmirbek_abdumanapov/web/widgets/first_page/feedback_item.dart';
+import 'package:elmirbek_abdumanapov/web/widgets/first_page_widgets/feedback_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class TextBlock extends StatelessWidget {
@@ -49,7 +49,7 @@ class TextBlock extends StatelessWidget {
             children: feedbackData.map((item) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: FeedbackItem(icon: item["icon"], text: item["text"]),
+                child: FeedbackItemWidget(icon: item["icon"], text: item["text"]),
               );
             }).toList(),
           ),
