@@ -1,8 +1,8 @@
-import 'package:elmirbek_abdumanapov/web/widgets/first_page/feedback_item.dart';
-import 'package:elmirbek_abdumanapov/web/widgets/first_page/text_block.dart';
+
+import 'package:elmirbek_abdumanapov/web/widgets/first_page_widgets/avatar_widget.dart';
+import 'package:elmirbek_abdumanapov/web/widgets/first_page_widgets/text_block.dart';
 import 'package:flutter/material.dart';
 
-import 'avatar_widget.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
