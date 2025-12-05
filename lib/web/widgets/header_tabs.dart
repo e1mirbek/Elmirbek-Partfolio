@@ -2,6 +2,7 @@
 
 
 
+import 'package:elmirbek_abdumanapov/components.dart';
 import 'package:flutter/material.dart';
 
 class HeaderTabs extends StatelessWidget {
@@ -9,6 +10,20 @@ class HeaderTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  const Row(
+      children: [
+        Spacer(flex: 3),
+        TabsWeb("Главная"),
+        Spacer(),
+        TabsWeb("Проекты"),
+        Spacer(),
+        TabsWeb("Заметки"),
+        Spacer(),
+        TabsWeb("Обо мне"),
+        Spacer(),
+        TabsWeb("Контакты"),
+        Spacer(),
+      ],
+    );
   }
 }
