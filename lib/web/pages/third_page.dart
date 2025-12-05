@@ -1,6 +1,5 @@
 import 'package:elmirbek_abdumanapov/components.dart';
-import 'package:elmirbek_abdumanapov/web/date/card_skilss_data.dart';
-import 'package:elmirbek_abdumanapov/web/widgets/third_page_widgets/card_skilss_widget.dart';
+import 'package:elmirbek_abdumanapov/web/widgets/animated_widgets.dart';
 import 'package:flutter/material.dart';
 
 class ThirdPage extends StatelessWidget {
@@ -17,10 +16,12 @@ class ThirdPage extends StatelessWidget {
           const SansBold("Мои услуги", 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: skillsCardData.map((item) {
-              return CardSkilssWidget(imagePath: item["image"], text: item["text"]);
-            }).toList(),
-          ),
+            children: [
+              AnimatedCardWebWidgets(imagePath: 'assets/images/webL.png', text: 'Веб разработка',),
+              AnimatedCardWebWidgets(imagePath: 'assets/images/app.png', text: 'Мобильный разработка', reverce: true,),
+              AnimatedCardWebWidgets(imagePath: 'assets/images/firebase.png', text: 'Backend разработка',),
+            ],
+          )
         ],
       ),
     );
